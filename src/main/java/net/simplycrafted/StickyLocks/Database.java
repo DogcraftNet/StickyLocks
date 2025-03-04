@@ -140,14 +140,7 @@ public class Database {
         // Doors only. This function's useful only for multiple-block Blocks that can't be
         // partially destroyed, which excludes chests.
         Block blockBelow = target.getRelative(BlockFace.DOWN);
-        if (target.getType().equals(Material.getMaterial("OAK_DOOR")) && blockBelow.getType().equals(Material.getMaterial("OAK_DOOR"))
-                || (target.getType().name().equals("IRON_DOOR") && blockBelow.getType().name().equals("IRON_DOOR"))
-                || (target.getType().name().equals("SPRUCE_DOOR") && blockBelow.getType().name().equals("SPRUCE_DOOR"))
-                || (target.getType().name().equals("BIRCH_DOOR") && blockBelow.getType().name().equals("BIRCH_DOOR"))
-                || (target.getType().name().equals("JUNGLE_DOOR") && blockBelow.getType().name().equals("JUNGLE_DOOR"))
-                || (target.getType().name().equals("ACACIA_DOOR") && blockBelow.getType().name().equals("ACACIA_DOOR"))
-                || (target.getType().name().equals("DARK_OAK_DOOR") && blockBelow.getType().name().equals("DARK_OAK_DOOR"))
-                ) {
+        if (target.getType().name().contains("_DOOR") && blockBelow.getType().name().equals(target.getType().name())) {
             // Doors have an ambiguous location, but we only need to check
             // the block below to disambiguate.
             return blockBelow.getLocation();
